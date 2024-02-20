@@ -96,4 +96,34 @@ export default class Methods {
 		}, [id], __options);
 	}
 
+	/**
+	* claimWin
+	*
+	* @param { string } id,
+	*/
+	"claimWin" (
+		id: string,
+		__options ? : GasLimit,
+	){
+		return txSignAndSend( this.__apiPromise, this.__nativeContract, this.__keyringPair, "claimWin", (events: EventRecord) => {
+			return decodeEvents(events, this.__nativeContract, EVENT_DATA_TYPE_DESCRIPTIONS);
+		}, [id], __options);
+	}
+
+	/**
+	* acceptRejectClaim
+	*
+	* @param { string } id,
+	* @param { ArgumentTypes.ClaimAction } action,
+	*/
+	"acceptRejectClaim" (
+		id: string,
+		action: ArgumentTypes.ClaimAction,
+		__options ? : GasLimit,
+	){
+		return txSignAndSend( this.__apiPromise, this.__nativeContract, this.__keyringPair, "acceptRejectClaim", (events: EventRecord) => {
+			return decodeEvents(events, this.__nativeContract, EVENT_DATA_TYPE_DESCRIPTIONS);
+		}, [id, action], __options);
+	}
+
 }

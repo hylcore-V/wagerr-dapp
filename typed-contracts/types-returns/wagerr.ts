@@ -11,7 +11,9 @@ export type Wager = {
 	terms: string,
 	amount: ReturnNumber,
 	totalStake: ReturnNumber,
-	status: WagerStatus
+	status: WagerStatus,
+	claimed: boolean,
+	claimant: AccountId | null
 }
 
 export enum WagerStatus {
@@ -28,6 +30,14 @@ export enum WagerrError {
 	paymentError = 'PaymentError',
 	wagerActive = 'WagerActive',
 	wagerJoinError = 'WagerJoinError',
-	wagerNotFound = 'WagerNotFound'
+	wagerNotFound = 'WagerNotFound',
+	wagerClaimError = 'WagerClaimError',
+	wagerActionError = 'WagerActionError',
+	wagerTransferError = 'WagerTransferError'
+}
+
+export enum ClaimAction {
+	accept = 'Accept',
+	reject = 'Reject'
 }
 

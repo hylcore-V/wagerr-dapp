@@ -78,4 +78,30 @@ export default class Methods {
 		return buildSubmittableExtrinsic( this.__apiPromise, this.__nativeContract, "joinWager", [id], __options);
 	}
 
+	/**
+	 * claimWin
+	 *
+	 * @param { string } id,
+	*/
+	"claimWin" (
+		id: string,
+		__options: GasLimit,
+	){
+		return buildSubmittableExtrinsic( this.__apiPromise, this.__nativeContract, "claimWin", [id], __options);
+	}
+
+	/**
+	 * acceptRejectClaim
+	 *
+	 * @param { string } id,
+	 * @param { ArgumentTypes.ClaimAction } action,
+	*/
+	"acceptRejectClaim" (
+		id: string,
+		action: ArgumentTypes.ClaimAction,
+		__options: GasLimit,
+	){
+		return buildSubmittableExtrinsic( this.__apiPromise, this.__nativeContract, "acceptRejectClaim", [id, action], __options);
+	}
+
 }

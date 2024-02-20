@@ -4,6 +4,7 @@ import { writeContractAddresses } from '@/utils/writeContractAddresses'
 import { deployContract } from '@scio-labs/use-inkathon/helpers'
 
 /**
+ * TODO: Debug the deployContract method
  * Script that deploys the wagerr contract and writes its address to a file.
  *
  * Parameters:
@@ -20,6 +21,7 @@ const main = async () => {
 
   // Deploy wagerr contract
   const { abi, wasm } = await getDeploymentData('wagerr')
+ 
   const wagerr = await deployContract(api, account, abi, wasm, 'default', [])
 
   // Write contract addresses to `{contract}/{network}.ts` file(s)

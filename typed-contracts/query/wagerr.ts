@@ -39,7 +39,7 @@ export default class Methods {
 		id: string,
 		__options ? : GasLimit,
 	): Promise< QueryReturnType< Result<ReturnTypes.Wager, ReturnTypes.LangError> > >{
-		return queryOkJSON( this.__apiPromise, this.__nativeContract, this.__callerAddress, "getWager", [id], __options , (result) => { return handleReturnType(result, getTypeDescription(12, DATA_TYPE_DESCRIPTIONS)); });
+		return queryOkJSON( this.__apiPromise, this.__nativeContract, this.__callerAddress, "getWager", [id], __options , (result) => { return handleReturnType(result, getTypeDescription(13, DATA_TYPE_DESCRIPTIONS)); });
 	}
 
 	/**
@@ -50,7 +50,7 @@ export default class Methods {
 	"getActiveWagers" (
 		__options ? : GasLimit,
 	): Promise< QueryReturnType< Result<Array<ReturnTypes.Wager>, ReturnTypes.LangError> > >{
-		return queryOkJSON( this.__apiPromise, this.__nativeContract, this.__callerAddress, "getActiveWagers", [], __options , (result) => { return handleReturnType(result, getTypeDescription(13, DATA_TYPE_DESCRIPTIONS)); });
+		return queryOkJSON( this.__apiPromise, this.__nativeContract, this.__callerAddress, "getActiveWagers", [], __options , (result) => { return handleReturnType(result, getTypeDescription(14, DATA_TYPE_DESCRIPTIONS)); });
 	}
 
 	/**
@@ -61,7 +61,7 @@ export default class Methods {
 	"getPendingWagers" (
 		__options ? : GasLimit,
 	): Promise< QueryReturnType< Result<Array<ReturnTypes.Wager>, ReturnTypes.LangError> > >{
-		return queryOkJSON( this.__apiPromise, this.__nativeContract, this.__callerAddress, "getPendingWagers", [], __options , (result) => { return handleReturnType(result, getTypeDescription(13, DATA_TYPE_DESCRIPTIONS)); });
+		return queryOkJSON( this.__apiPromise, this.__nativeContract, this.__callerAddress, "getPendingWagers", [], __options , (result) => { return handleReturnType(result, getTypeDescription(14, DATA_TYPE_DESCRIPTIONS)); });
 	}
 
 	/**
@@ -76,7 +76,7 @@ export default class Methods {
 		terms: string,
 		__options ? : GasLimitAndRequiredValue,
 	): Promise< QueryReturnType< Result<string, ReturnTypes.LangError> > >{
-		return queryOkJSON( this.__apiPromise, this.__nativeContract, this.__callerAddress, "createWager", [name, terms], __options , (result) => { return handleReturnType(result, getTypeDescription(14, DATA_TYPE_DESCRIPTIONS)); });
+		return queryOkJSON( this.__apiPromise, this.__nativeContract, this.__callerAddress, "createWager", [name, terms], __options , (result) => { return handleReturnType(result, getTypeDescription(15, DATA_TYPE_DESCRIPTIONS)); });
 	}
 
 	/**
@@ -89,7 +89,35 @@ export default class Methods {
 		id: string,
 		__options ? : GasLimitAndRequiredValue,
 	): Promise< QueryReturnType< Result<Result<ReturnTypes.Wager, ReturnTypes.WagerrError>, ReturnTypes.LangError> > >{
-		return queryOkJSON( this.__apiPromise, this.__nativeContract, this.__callerAddress, "joinWager", [id], __options , (result) => { return handleReturnType(result, getTypeDescription(15, DATA_TYPE_DESCRIPTIONS)); });
+		return queryOkJSON( this.__apiPromise, this.__nativeContract, this.__callerAddress, "joinWager", [id], __options , (result) => { return handleReturnType(result, getTypeDescription(16, DATA_TYPE_DESCRIPTIONS)); });
+	}
+
+	/**
+	* claimWin
+	*
+	* @param { string } id,
+	* @returns { Result<Result<ReturnTypes.Wager, ReturnTypes.WagerrError>, ReturnTypes.LangError> }
+	*/
+	"claimWin" (
+		id: string,
+		__options ? : GasLimit,
+	): Promise< QueryReturnType< Result<Result<ReturnTypes.Wager, ReturnTypes.WagerrError>, ReturnTypes.LangError> > >{
+		return queryOkJSON( this.__apiPromise, this.__nativeContract, this.__callerAddress, "claimWin", [id], __options , (result) => { return handleReturnType(result, getTypeDescription(16, DATA_TYPE_DESCRIPTIONS)); });
+	}
+
+	/**
+	* acceptRejectClaim
+	*
+	* @param { string } id,
+	* @param { ArgumentTypes.ClaimAction } action,
+	* @returns { Result<Result<ReturnTypes.Wager, ReturnTypes.WagerrError>, ReturnTypes.LangError> }
+	*/
+	"acceptRejectClaim" (
+		id: string,
+		action: ArgumentTypes.ClaimAction,
+		__options ? : GasLimit,
+	): Promise< QueryReturnType< Result<Result<ReturnTypes.Wager, ReturnTypes.WagerrError>, ReturnTypes.LangError> > >{
+		return queryOkJSON( this.__apiPromise, this.__nativeContract, this.__callerAddress, "acceptRejectClaim", [id, action], __options , (result) => { return handleReturnType(result, getTypeDescription(16, DATA_TYPE_DESCRIPTIONS)); });
 	}
 
 }

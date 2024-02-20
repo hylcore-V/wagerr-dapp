@@ -9,6 +9,7 @@ import {
 } from '@scio-labs/use-inkathon/helpers'
 
 /**
+ * TODO: Debug the deployContract method
  * Example script that updates & reads a message from a wagerr contract.
  * Can be used as a template for other scripts.
  *
@@ -28,18 +29,18 @@ const main = async () => {
   const { address } = await deployContract(api, account, abi, wasm, 'default', [])
   const contract = new ContractPromise(api, abi, address)
 
-  // Update message
-  try {
-    await contractTx(api, account, contract, 'set_message', {}, ['Hello, script!'])
-    console.log('\nSuccessfully updated greeting')
-  } catch (error) {
-    console.error('Error while updating greeting', error)
-  }
+  // // Update message
+  // try {
+  //   await contractTx(api, account, contract, 'set_message', {}, ['Hello, script!'])
+  //   console.log('\nSuccessfully updated greeting')
+  // } catch (error) {
+  //   console.error('Error while updating greeting', error)
+  // }
 
-  // Read message
-  const result = await contractQuery(api, '', contract, 'greet')
-  const { decodedOutput } = decodeOutput(result, contract, 'greet')
-  console.log('\nQueried greeting:', decodedOutput)
+  // // Read message
+  // const result = await contractQuery(api, '', contract, 'greet')
+  // const { decodedOutput } = decodeOutput(result, contract, 'greet')
+  // console.log('\nQueried greeting:', decodedOutput)
 }
 
 main()

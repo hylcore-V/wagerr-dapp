@@ -149,7 +149,7 @@ mod wagerr {
             self.wagers_vec
                 .iter()
                 .filter(|wager | { 
-                    wager.status == WagerStatus::Active && (wager.creator == account || wager.bettor == Some(account) )}
+                    (wager.creator == account || wager.bettor == Some(account) ) && wager.status == WagerStatus::Active }
                 )
                 .cloned()
                 .collect()
